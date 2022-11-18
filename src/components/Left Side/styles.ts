@@ -8,10 +8,23 @@ background-color: rgba(255,255,255, 0.4);;
 padding: 1em;
 `
 
-export const City = styled.h1`
+export const City = styled.input`
 display: flex;
 justify-content: center;
 font-size: 5em;
+text-align: center;
+background-color: transparent;
+border: none;
+width: 7em;
+
+::placeholder{
+    color: grey;
+    font-size: .7em;
+} 
+
+:focus{
+    outline: none;
+}
 
 `
 

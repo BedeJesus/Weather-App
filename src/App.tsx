@@ -8,6 +8,7 @@ export default function App() {
   return (
     <Container>
       <GlobalStyle />
+      
       <Today />
       <Forecast />
     </Container>
