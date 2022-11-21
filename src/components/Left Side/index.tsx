@@ -31,6 +31,10 @@ export default function Today() {
 
     }
 
+    function formatCity(){
+        
+    }
+
 
     return (
         <Container>
@@ -42,6 +46,7 @@ export default function Today() {
                 onChange={e => setCity(e.target.value)}
                 onKeyDown={event => search(event)}
             />
+
             <Date>17 de novembro de 2022</Date>
             <Temperature>30º</Temperature>
             <Weather>Nublado</Weather>
