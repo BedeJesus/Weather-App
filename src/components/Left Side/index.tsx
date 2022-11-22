@@ -5,36 +5,42 @@ import api from "../../utils/api"
 
 export default function Today() {
 
-    const [city, setCity] = useState('sao,paulo')
+    const [city, setCity] = useState('São Paulo')
+    const [formatedCity, setFormatedCity] = useState('sao,paulo')
     const [data, setData] = useState({})
     const API_KEY = process.env.REACT_APP_API_KEY
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     api.get(`/weather?q=${city}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
-    //         setData(response.data)
+        api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
+            setData(response.data)
+            console.log('api fetch')
 
-    //     })
+        })
 
-    // }, [city])
+    }, [])
+
+
+    useEffect(() => {
+
+        setFormatedCity(formatedCity.replaceAll(' ', ','))
+        setFormatedCity(city.toLowerCase())
+
+
+    }, [city])
 
     async function search(event: KeyboardEvent<HTMLInputElement>) {
-        if (event.key === 'Enter') {
-            console.log('hmm blz')
+        if (event.key == 'Enter') {
 
-            await api.get(`/weather?q=${city}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
+            await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
+                console.log('api fetch')
 
             })
         }
 
     }
-
-    function formatCity(){
-        
-    }
-
 
     return (
         <Container>
@@ -57,7 +63,7 @@ export default function Today() {
             </MinMax>
 
             <>
-                {console.log(data)}
+                {/* {console.log(data)} */}
             </>
 
 
