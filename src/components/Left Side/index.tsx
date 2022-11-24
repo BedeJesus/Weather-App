@@ -3,11 +3,28 @@ import { ArrowUp, ArrowDown } from 'phosphor-react'
 import { KeyboardEvent, useEffect, useState } from 'react'
 import api from "../../utils/api"
 
+interface Data {
+    main: {
+        temp: number;
+        feels_like: number;
+        temp_min: number;
+        temp_max: number;
+
+    }
+
+    weather: [{
+        main: string;
+        description: string;
+    }]
+
+    dt: number;
+}
+
 export default function Today() {
 
     const [city, setCity] = useState('São Paulo')
     const [formatedCity, setFormatedCity] = useState('sao,paulo')
-    const [data, setData] = useState({})
+    const [data, setData] = useState<Data>()
     const API_KEY = process.env.REACT_APP_API_KEY
 
 
@@ -15,7 +32,6 @@ export default function Today() {
 
         api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
             setData(response.data)
-            console.log('api fetch')
 
         })
 
@@ -35,7 +51,7 @@ export default function Today() {
 
             await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
-                console.log('api fetch')
+                console.log(data)
 
             })
         }
@@ -63,7 +79,7 @@ export default function Today() {
             </MinMax>
 
             <>
-                {/* {console.log(data)} */}
+                {console.log(data?.weather[0].description)}
             </>
 
 
