@@ -9,7 +9,6 @@ interface Data {
         feels_like: number;
         temp_min: number;
         temp_max: number;
-
     }
 
     weather: [{
@@ -22,18 +21,26 @@ interface Data {
 
 export default function Today() {
 
-    const [city, setCity] = useState('São Paulo')
-    const [formatedCity, setFormatedCity] = useState('sao,paulo')
+    const [city, setCity] = useState('Sydney')
+    const [formatedCity, setFormatedCity] = useState('sydney')
     const [data, setData] = useState<Data>()
+    const [loading, setLoading] = useState(false)
     const API_KEY = process.env.REACT_APP_API_KEY
 
 
     useEffect(() => {
 
-        api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
-            setData(response.data)
+        async function firstApiCall() {
 
-        })
+            await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
+                setData(response.data)
+            })
+
+            setLoading(true)
+        }
+
+        firstApiCall()
+
 
     }, [])
 
@@ -42,7 +49,6 @@ export default function Today() {
 
         setFormatedCity(formatedCity.replaceAll(' ', ','))
         setFormatedCity(city.toLowerCase())
-
 
     }, [city])
 
@@ -69,20 +75,27 @@ export default function Today() {
                 onKeyDown={event => search(event)}
             />
 
-            <Date>17 de novembro de 2022</Date>
-            <Temperature>30º</Temperature>
-            <Weather>Nublado</Weather>
+            <>{loading &&
 
-            <MinMax>
-                <h4> <ArrowUp />34º</h4>
-                <h4> <ArrowDown />23º</h4>
-            </MinMax>
+                <>
 
-            <>
-                {console.log(data?.weather[0].description)}
-            </>
+                    <Date>17 de novembro de 2022</Date>
+                    <Temperature>{data?.main.temp.toFixed(0)}º</Temperature>
+                    <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
+
+                    <MinMax>
+                        <h4> <ArrowUp />{data?.main.temp_max.toFixed(0)}º</h4>
+                        <h4> <ArrowDown />{data?.main.temp_min.toFixed(0)}º</h4>
+                    </MinMax>
+
+                    <>
+                        {console.log(data)}
+                    </>
+
+                </>
 
 
+            }</>
 
         </Container>
 
