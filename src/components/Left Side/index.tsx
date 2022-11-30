@@ -19,9 +19,14 @@ interface Data {
     dt: number;
 }
 
-export default function Today() {
+interface Props {
+    city: string;
+    enter: boolean;
+}
 
-    const [city, setCity] = useState('Sydney')
+export default function Today(props: Props) {
+
+
     const [formatedCity, setFormatedCity] = useState('sydney')
     const [data, setData] = useState<Data>()
     const [loading, setLoading] = useState(false)
@@ -29,16 +34,12 @@ export default function Today() {
 
 
     useEffect(() => {
-
         async function firstApiCall() {
-
             await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
             })
-
             setLoading(true)
         }
-
         firstApiCall()
 
 
@@ -48,32 +49,27 @@ export default function Today() {
     useEffect(() => {
 
         setFormatedCity(formatedCity.replaceAll(' ', ','))
-        setFormatedCity(city.toLowerCase())
+        setFormatedCity(props.city.toLowerCase())
 
-    }, [city])
+    }, [props.city])
 
-    async function search(event: KeyboardEvent<HTMLInputElement>) {
-        if (event.key == 'Enter') {
 
+    useEffect(() => {
+
+        async function search() {
             await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
                 console.log(data)
-
             })
         }
 
-    }
+        search()
+
+
+    }, [props.enter])
 
     return (
         <Container>
-
-            <City
-                type='text'
-                placeholder="Digite aqui a cidade"
-                value={city}
-                onChange={e => setCity(e.target.value)}
-                onKeyDown={event => search(event)}
-            />
 
             <>{loading &&
 
@@ -87,10 +83,6 @@ export default function Today() {
                         <h4> <ArrowUp />{data?.main.temp_max.toFixed(0)}º</h4>
                         <h4> <ArrowDown />{data?.main.temp_min.toFixed(0)}º</h4>
                     </MinMax>
-
-                    <>
-                        {console.log(data)}
-                    </>
 
                 </>
 
