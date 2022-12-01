@@ -1,7 +1,13 @@
 import { Container, Line, Icon, Info } from "./styles";
 import { ArrowUp, ArrowDown, CloudRain } from 'phosphor-react'
 
+
+
+
 export default function ForecastDay() {
+
+
+
     return (
         <Container>
 
@@ -20,7 +26,10 @@ export default function ForecastDay() {
                 <Line>
                     <h1>Chuva</h1>
                     <h2>90%</h2>
+
                 </Line>
+                <>
+                </>
 
             </Info>
 

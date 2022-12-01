@@ -1,6 +1,6 @@
 import { Container, City, Temperature, Weather, MinMax, Date } from "./styles"
 import { ArrowUp, ArrowDown } from 'phosphor-react'
-import { KeyboardEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from "../../utils/api"
 
 interface Data {
@@ -42,7 +42,6 @@ export default function Today(props: Props) {
         }
         firstApiCall()
 
-
     }, [])
 
 
@@ -62,9 +61,7 @@ export default function Today(props: Props) {
                 console.log(data)
             })
         }
-
         search()
-
 
     }, [props.enter])
 
