@@ -27,6 +27,7 @@ background-color: transparent;
 border: none;
 width: 7em;
 
+
 ::placeholder{
     color: grey;
     font-size: .7em;

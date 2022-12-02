@@ -11,10 +11,10 @@ interface Data {
         temp_max: number;
     }
 
-    weather: [{
+    weather: {
         main: string;
         description: string;
-    }]
+    }[]
 
     dt: number;
 }
@@ -58,7 +58,7 @@ export default function Today(props: Props) {
         async function search() {
             await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
-                console.log(data)
+
             })
         }
         search()
@@ -81,8 +81,10 @@ export default function Today(props: Props) {
                         <h4> <ArrowDown />{data?.main.temp_min.toFixed(0)}º</h4>
                     </MinMax>
 
+                    
                 </>
 
+                
 
             }</>
 

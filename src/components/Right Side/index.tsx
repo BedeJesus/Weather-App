@@ -2,6 +2,7 @@ import { Container } from "./styles"
 import ForecastDay from "../Forecast Day"
 import { useEffect, useState } from 'react'
 import api from "../../utils/api"
+import { mainModule } from "process";
 
 interface Props {
     city: string;
@@ -12,29 +13,26 @@ interface Props {
 interface Data {
     list: {
 
-        main: [{
+        main: {
             temp: number;
             temp_min: number;
             temp_max: number;
-        }]
+        }
 
-        weather: [{
+        weather: {
             main: string;
             description: string;
-        }]
+        }[]
 
-        clouds: [{
+        clouds: {
             all: number;
-        }]
+        }[]
 
         dt_txt: string;
-    }
-
-
+    }[]
 
     dt: number;
 }
-
 
 
 
@@ -68,9 +66,9 @@ export default function Forecast(props: Props) {
     useEffect(() => {
 
         async function search() {
-            await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
+            await api.get(`/forecast?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
-                console.log(data)
+
             })
         }
         search()
@@ -82,17 +80,31 @@ export default function Forecast(props: Props) {
         <Container>
             <h1>Previsão de tempo</h1>
 
-            <ForecastDay />
-            <ForecastDay />
-            <ForecastDay />
-            <ForecastDay />
-            <ForecastDay />
+            {/* <ForecastDay
+                temp_min={data?.list[1]?.main.temp_min}
+                temp_max={data?.list[6].main.temp_max}
+                desc={data?.list[6].weather.description}
+                clouds={data?.list[6].clouds.all}
 
-            <>
+
+            /> */}
+
+
+            {/* <ForecastDay />
+            <ForecastDay />
+            <ForecastDay />
+            <ForecastDay /> */}
+
+            {/* <>
                 const min=  {console.log(data?.list[1].main.temp_min)}
                 max = {console.log(data?.list[6].main.temp_max)}
                 desc = {console.log(data?.list[6].weather.description)}
                 clouds = {console.log(data?.list[6].clouds.all)}
+
+            </> */}
+
+            <>
+                {console.log(data?.list[3]?.main)}
 
             </>
         </Container>

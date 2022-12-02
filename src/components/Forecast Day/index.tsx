@@ -2,9 +2,18 @@ import { Container, Line, Icon, Info } from "./styles";
 import { ArrowUp, ArrowDown, CloudRain } from 'phosphor-react'
 
 
+interface Props {
+    temp_min:number;
+    temp_max:number;
+    desc:string;
+    clouds:number;
+
+}
 
 
-export default function ForecastDay() {
+
+
+export default function ForecastDay(props:Props) {
 
 
 
