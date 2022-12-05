@@ -14,26 +14,25 @@ interface Data {
     list: {
 
         main: {
-            temp: number;
-            temp_min: number;
-            temp_max: number;
+            temp: any;
+            temp_min: any;
+            temp_max: any;
         }
 
         weather: {
-            main: string;
-            description: string;
+            main: any;
+            description: any;
         }[]
 
         clouds: {
-            all: number;
-        }[]
+            all: any;
+        }
 
-        dt_txt: string;
+        dt_txt: any;
     }[]
 
-    dt: number;
+    dt: any;
 }
-
 
 
 export default function Forecast(props: Props) {
@@ -80,33 +79,25 @@ export default function Forecast(props: Props) {
         <Container>
             <h1>Previsão de tempo</h1>
 
-            {/* <ForecastDay
-                temp_min={data?.list[1]?.main.temp_min}
-                temp_max={data?.list[6].main.temp_max}
-                desc={data?.list[6].weather.description}
-                clouds={data?.list[6].clouds.all}
+            <>{loading &&
+                <>
 
+                    <ForecastDay
+                        temp_min={data?.list[1]?.main.temp_min}
+                        temp_max={data?.list[6]?.main.temp_max}
+                        desc={data?.list[6]?.weather[0]?.description}
+                        clouds={data?.list[6].clouds.all}
+                    />
 
-            /> */}
+                    <>
+                        {console.log(data?.list[6]?.weather[0].description)}
 
+                    </>
 
-            {/* <ForecastDay />
-            <ForecastDay />
-            <ForecastDay />
-            <ForecastDay /> */}
+                </>
 
-            {/* <>
-                const min=  {console.log(data?.list[1].main.temp_min)}
-                max = {console.log(data?.list[6].main.temp_max)}
-                desc = {console.log(data?.list[6].weather.description)}
-                clouds = {console.log(data?.list[6].clouds.all)}
+            } </>
 
-            </> */}
-
-            <>
-                {console.log(data?.list[3]?.main)}
-
-            </>
         </Container>
 
     )

@@ -3,17 +3,14 @@ import { ArrowUp, ArrowDown, CloudRain } from 'phosphor-react'
 
 
 interface Props {
-    temp_min:number;
-    temp_max:number;
-    desc:string;
-    clouds:number;
+    temp_min: number ;
+    temp_max: number;
+    desc: string;
+    clouds: number;
 
 }
 
-
-
-
-export default function ForecastDay(props:Props) {
+export default function ForecastDay(props: Props) {
 
 
 
@@ -29,17 +26,15 @@ export default function ForecastDay(props:Props) {
 
                 <Line>
                     <h1>Temperatura</h1>
-                    <h2> <ArrowUp color="red" weight="bold" />20º <ArrowDown color="blue" weight="bold" />10º</h2>
+                    <h2> <ArrowUp color="red" weight="bold" />{props.temp_max} <ArrowDown color="blue" weight="bold" />{props.temp_min}</h2>
                 </Line>
 
                 <Line>
-                    <h1>Chuva</h1>
-                    <h2>90%</h2>
+                    <h1>{props.desc}</h1>
+                    <h2>{props.clouds}</h2>
 
                 </Line>
-                <>
-                </>
-
+                
             </Info>
 
 
