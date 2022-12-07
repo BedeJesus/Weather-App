@@ -87,10 +87,11 @@ export default function Forecast(props: Props) {
                         temp_max={data?.list[6]?.main.temp_max}
                         desc={data?.list[6]?.weather[0]?.description}
                         clouds={data?.list[6].clouds.all}
+                        date= {data?.list[6]?.dt_txt}
                     />
 
                     <>
-                        {console.log(data?.list[6]?.weather[0].description)}
+                        {/* {console.log(data?.list[6]?.dt_txt)} */}
 
                     </>
 

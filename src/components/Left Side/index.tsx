@@ -65,14 +65,22 @@ export default function Today(props: Props) {
 
     }, [props.enter])
 
+
+
+
+
+
     return (
         <Container>
 
             <>{loading &&
 
                 <>
-
-                    <Date>17 de novembro de 2022</Date>
+                    <>
+                    {console.log(data)}
+                    
+                    </>
+                    <Date>{'COLOCAR DATA AQUI'}</Date>
                     <Temperature>{data?.main.temp.toFixed(0)}º</Temperature>
                     <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
 
@@ -92,4 +100,8 @@ export default function Today(props: Props) {
 
     )
 
+}
+
+function getMinutes(): import("react").ReactNode {
+    throw new Error("Function not implemented.")
 }
