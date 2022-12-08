@@ -76,10 +76,7 @@ export default function Today(props: Props) {
             <>{loading &&
 
                 <>
-                    <>
-                    {console.log(data)}
-                    
-                    </>
+
                     <Date>{'COLOCAR DATA AQUI'}</Date>
                     <Temperature>{data?.main.temp.toFixed(0)}º</Temperature>
                     <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
@@ -89,10 +86,10 @@ export default function Today(props: Props) {
                         <h4> <ArrowDown />{data?.main.temp_min.toFixed(0)}º</h4>
                     </MinMax>
 
-                    
+
                 </>
 
-                
+
 
             }</>
 

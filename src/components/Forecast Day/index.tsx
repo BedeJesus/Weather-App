@@ -1,14 +1,14 @@
 import { Container, Line, Icon, Info } from "./styles";
-import { ArrowUp, ArrowDown, CloudRain } from 'phosphor-react'
+import { ArrowUp, ArrowDown, CloudRain, Sun, CloudSnow, CloudFog, Cloud } from 'phosphor-react'
 
 
 interface Props {
     temp_min: number;
     temp_max: number;
     desc: string;
+    main: string;
     clouds: number;
     date: string;
-
 }
 
 export default function ForecastDay(props: Props) {
@@ -23,13 +23,44 @@ export default function ForecastDay(props: Props) {
         return formatedDate
     }
 
+    
+
+    function setIcon() {
+        if (props.main === 'Clear') {
+
+            return <Sun />
+             
+        } else if (props.main === 'Rain') {
+
+            return <CloudRain />
+
+        } else if (props.main === 'Snow') {
+
+            return <CloudSnow />
+
+        } else if (props.main === 'Mist') {
+
+            return <CloudFog />
+
+        } else if (props.main === 'Clouds') {
+
+            return <Cloud />
+
+        }
+    }
+
+    // fazer uma funcao, com 2 parametros:
+    //1 indice para a primeira lista do dia
+    // e outro indice para a ultima lista do dia
+    // varrer os arrays e achar quais eh a temp
+    // min e max
 
 
     return (
         <Container>
 
             <Icon>
-                <h1><CloudRain /></h1>
+                <h1>{setIcon()}</h1>
                 <h2>{formatedDate()}</h2>
             </Icon>
 
@@ -51,7 +82,6 @@ export default function ForecastDay(props: Props) {
                 </Line>
 
             </Info>
-
 
         </Container>
     )

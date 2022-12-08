@@ -2,7 +2,6 @@ import { Container } from "./styles"
 import ForecastDay from "../Forecast Day"
 import { useEffect, useState } from 'react'
 import api from "../../utils/api"
-import { mainModule } from "process";
 
 interface Props {
     city: string;
@@ -36,7 +35,6 @@ interface Data {
 
 
 export default function Forecast(props: Props) {
-
 
     const [formatedCity, setFormatedCity] = useState('sydney')
     const [data, setData] = useState<Data>()
@@ -75,6 +73,71 @@ export default function Forecast(props: Props) {
     }, [props.enter])
 
 
+
+    function getMaxTemp(first: number, last: number) {
+
+        // search inside the arrays of a certain day for the highest temperature possible
+
+        let tempMax = 0
+        let index = 0
+
+        for (let i = first; i < last; i++) {
+
+            console.log(data?.list[i]?.main?.temp_max)
+
+            if (data?.list[i]?.main?.temp_max
+                > data?.list[i - 1]?.main?.temp_max
+                &&
+                data?.list[i]?.main?.temp_max
+                > data?.list[index]?.main?.temp_max
+
+            ) {
+                tempMax = data?.list[i].main.temp_max
+                index = i
+
+            }
+
+        }
+
+        return tempMax
+
+    }
+
+    function getMinTemp(first: number, last: number) {
+
+        // search inside the arrays of a certain day for the lowest temperature possible
+
+        let tempMin = 0
+        let index = 0
+
+        for (let i = first; i < last; i++) {
+
+            if (data?.list[i]?.main?.temp_min
+                < data?.list[i - 1]?.main?.temp_min
+                &&
+
+                data?.list[i]?.main?.temp_min
+                < data?.list[index]?.main?.temp_min
+
+
+
+            ) {
+                tempMin = data?.list[i].main.temp_min
+                index = i
+                console.log('O valor que foi pego como menor:', i, tempMin)
+                // quando o primeiro valor é menor que o segundo da erro
+                //mesmo erro acontece o temp max
+
+
+            }
+
+        }
+
+        return tempMin
+
+    }
+
+
     return (
         <Container>
             <h1>Previsão de tempo</h1>
@@ -83,15 +146,26 @@ export default function Forecast(props: Props) {
                 <>
 
                     <ForecastDay
-                        temp_min={data?.list[1]?.main.temp_min}
-                        temp_max={data?.list[6]?.main.temp_max}
-                        desc={data?.list[6]?.weather[0]?.description}
-                        clouds={data?.list[6].clouds.all}
-                        date= {data?.list[6]?.dt_txt}
+                        temp_min={getMinTemp(0, 7)}
+                        temp_max={getMaxTemp(0, 7)}
+                        desc={data?.list[5]?.weather[0]?.description}
+                        main={data?.list[5]?.weather[0]?.main}
+                        clouds={data?.list[5].clouds.all}
+                        date={data?.list[5]?.dt_txt}
                     />
 
                     <>
-                        {/* {console.log(data?.list[6]?.dt_txt)} */}
+                        {console.log(data)}
+                        {/* 
+
+                    0-7 : dia 1
+                    8-15: dia 2
+                    16-23 : dia 3
+                    24-31 : dia 4
+                    32-39: dia 5
+                    
+                    */}
+
 
                     </>
 
