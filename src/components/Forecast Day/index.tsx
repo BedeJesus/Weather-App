@@ -13,8 +13,6 @@ interface Props {
 
 export default function ForecastDay(props: Props) {
 
-
-
     function formatedDate() {
         let formatedDate = props.date
         formatedDate = formatedDate.split(' ')[0]
@@ -22,8 +20,6 @@ export default function ForecastDay(props: Props) {
         formatedDate = formatedDate.split("/", 2).join("/")
         return formatedDate
     }
-
-    
 
     function setIcon() {
         if (props.main === 'Clear') {
@@ -49,13 +45,6 @@ export default function ForecastDay(props: Props) {
         }
     }
 
-    // fazer uma funcao, com 2 parametros:
-    //1 indice para a primeira lista do dia
-    // e outro indice para a ultima lista do dia
-    // varrer os arrays e achar quais eh a temp
-    // min e max
-
-
     return (
         <Container>
 
@@ -70,8 +59,8 @@ export default function ForecastDay(props: Props) {
                     <h1>Temperatura</h1>
 
                     <h2>
-                        <ArrowUp color="red" weight="bold" />{props.temp_max}
-                        <ArrowDown color="blue" weight="bold" />{props.temp_min}
+                        <ArrowUp color="red" weight="bold" />{props.temp_max}º
+                        <ArrowDown color="blue" weight="bold" />{props.temp_min}º
                     </h2>
                 </Line>
 

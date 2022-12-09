@@ -76,64 +76,29 @@ export default function Forecast(props: Props) {
 
     function getMaxTemp(first: number, last: number) {
 
-        // search inside the arrays of a certain day for the highest temperature possible
+        let values: number[] = []
 
-        let tempMax = 0
-        let index = 0
+        for (let i = first; i <= last; i++) {
 
-        for (let i = first; i < last; i++) {
-
-            console.log(data?.list[i]?.main?.temp_max)
-
-            if (data?.list[i]?.main?.temp_max
-                > data?.list[i - 1]?.main?.temp_max
-                &&
-                data?.list[i]?.main?.temp_max
-                > data?.list[index]?.main?.temp_max
-
-            ) {
-                tempMax = data?.list[i].main.temp_max
-                index = i
-
-            }
-
+            values.push(data?.list[i]?.main?.temp_max)
         }
 
-        return tempMax
+        const tempMax = Math.max(...values)
+        return Math.round(tempMax)
 
     }
 
     function getMinTemp(first: number, last: number) {
 
-        // search inside the arrays of a certain day for the lowest temperature possible
+        let values: number[] = []
 
-        let tempMin = 0
-        let index = 0
+        for (let i = first; i <= last; i++) {
 
-        for (let i = first; i < last; i++) {
-
-            if (data?.list[i]?.main?.temp_min
-                < data?.list[i - 1]?.main?.temp_min
-                &&
-
-                data?.list[i]?.main?.temp_min
-                < data?.list[index]?.main?.temp_min
-
-
-
-            ) {
-                tempMin = data?.list[i].main.temp_min
-                index = i
-                console.log('O valor que foi pego como menor:', i, tempMin)
-                // quando o primeiro valor é menor que o segundo da erro
-                //mesmo erro acontece o temp max
-
-
-            }
-
+            values.push(data?.list[i]?.main?.temp_min)
         }
 
-        return tempMin
+        const tempMin = Math.min(...values)
+        return Math.round(tempMin)
 
     }
 
@@ -154,20 +119,41 @@ export default function Forecast(props: Props) {
                         date={data?.list[5]?.dt_txt}
                     />
 
-                    <>
-                        {console.log(data)}
-                        {/* 
+                    <ForecastDay
+                        temp_min={getMinTemp(8, 15)}
+                        temp_max={getMaxTemp(8, 15)}
+                        desc={data?.list[23]?.weather[0]?.description}
+                        main={data?.list[13]?.weather[0]?.main}
+                        clouds={data?.list[13].clouds.all}
+                        date={data?.list[13]?.dt_txt}
+                    />
 
-                    0-7 : dia 1
-                    8-15: dia 2
-                    16-23 : dia 3
-                    24-31 : dia 4
-                    32-39: dia 5
-                    
-                    */}
+                    <ForecastDay
+                        temp_min={getMinTemp(16, 23)}
+                        temp_max={getMaxTemp(16, 23)}
+                        desc={data?.list[21]?.weather[0]?.description}
+                        main={data?.list[21]?.weather[0]?.main}
+                        clouds={data?.list[21].clouds.all}
+                        date={data?.list[21]?.dt_txt}
+                    />
 
+                    <ForecastDay
+                        temp_min={getMinTemp(24, 31)}
+                        temp_max={getMaxTemp(24, 31)}
+                        desc={data?.list[29]?.weather[0]?.description}
+                        main={data?.list[29]?.weather[0]?.main}
+                        clouds={data?.list[29].clouds.all}
+                        date={data?.list[29]?.dt_txt}
+                    />
 
-                    </>
+                    <ForecastDay
+                        temp_min={getMinTemp(32, 39)}
+                        temp_max={getMaxTemp(32, 39)}
+                        desc={data?.list[27]?.weather[0]?.description}
+                        main={data?.list[27]?.weather[0]?.main}
+                        clouds={data?.list[27].clouds.all}
+                        date={data?.list[27]?.dt_txt}
+                    />
 
                 </>
 

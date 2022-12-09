@@ -67,9 +67,6 @@ export default function Today(props: Props) {
 
 
 
-
-
-
     return (
         <Container>
 
@@ -82,8 +79,8 @@ export default function Today(props: Props) {
                     <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
 
                     <MinMax>
-                        <h4> <ArrowUp />{data?.main.temp_max.toFixed(0)}º</h4>
-                        <h4> <ArrowDown />{data?.main.temp_min.toFixed(0)}º</h4>
+                        <h4> <ArrowUp color="red" />{data?.main.temp_max.toFixed(0)}º</h4>
+                        <h4> <ArrowDown color="blue" />{data?.main.temp_min.toFixed(0)}º</h4>
                     </MinMax>
 
 
@@ -99,6 +96,3 @@ export default function Today(props: Props) {
 
 }
 
-function getMinutes(): import("react").ReactNode {
-    throw new Error("Function not implemented.")
-}
