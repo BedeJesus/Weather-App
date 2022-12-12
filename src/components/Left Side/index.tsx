@@ -2,22 +2,8 @@ import { Container, City, Temperature, Weather, MinMax, Date } from "./styles"
 import { ArrowUp, ArrowDown } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import api from "../../utils/api"
+import {Data} from '../../Interfaces/TodayData'
 
-interface Data {
-    main: {
-        temp: number;
-        feels_like: number;
-        temp_min: number;
-        temp_max: number;
-    }
-
-    weather: {
-        main: string;
-        description: string;
-    }[]
-
-    dt: number;
-}
 
 interface Props {
     city: string;
@@ -25,6 +11,8 @@ interface Props {
 }
 
 export default function Today(props: Props) {
+
+    
 
 
     const [formatedCity, setFormatedCity] = useState('sydney')

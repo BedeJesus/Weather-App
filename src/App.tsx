@@ -12,13 +12,11 @@ export default function App() {
 
   async function search(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key == 'Enter') {
-      
+
       enter ? setEnter(false) : setEnter(true)
     }
 
-    
   }
-
 
 
   return (

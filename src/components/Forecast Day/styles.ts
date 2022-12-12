@@ -7,7 +7,7 @@ background-color: rgba(255,255,255, 0.4);;
 align-items: center;
 padding: 0em 1em;
 width: 130%;
-margin:.5em 0;
+margin:.46em 0;
 `
 
 export const Icon = styled.div`

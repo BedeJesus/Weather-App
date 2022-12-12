@@ -25,7 +25,7 @@ export default function ForecastDay(props: Props) {
         if (props.main === 'Clear') {
 
             return <Sun />
-             
+
         } else if (props.main === 'Rain') {
 
             return <CloudRain />
@@ -67,7 +67,6 @@ export default function ForecastDay(props: Props) {
                 <Line>
                     <h1>{props.desc}</h1>
                     <h2>{props.clouds}%</h2>
-
                 </Line>
 
             </Info>

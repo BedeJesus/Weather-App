@@ -2,37 +2,12 @@ import { Container } from "./styles"
 import ForecastDay from "../Forecast Day"
 import { useEffect, useState } from 'react'
 import api from "../../utils/api"
+import { Data } from "../../Interfaces/ForecastData"
 
 interface Props {
     city: string;
     enter: boolean;
 }
-
-
-interface Data {
-    list: {
-
-        main: {
-            temp: any;
-            temp_min: any;
-            temp_max: any;
-        }
-
-        weather: {
-            main: any;
-            description: any;
-        }[]
-
-        clouds: {
-            all: any;
-        }
-
-        dt_txt: any;
-    }[]
-
-    dt: any;
-}
-
 
 export default function Forecast(props: Props) {
 
@@ -65,7 +40,6 @@ export default function Forecast(props: Props) {
         async function search() {
             await api.get(`/forecast?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
-
             })
         }
         search()
@@ -73,13 +47,11 @@ export default function Forecast(props: Props) {
     }, [props.enter])
 
 
-
     function getMaxTemp(first: number, last: number) {
 
         let values: number[] = []
 
         for (let i = first; i <= last; i++) {
-
             values.push(data?.list[i]?.main?.temp_max)
         }
 
@@ -93,7 +65,6 @@ export default function Forecast(props: Props) {
         let values: number[] = []
 
         for (let i = first; i <= last; i++) {
-
             values.push(data?.list[i]?.main?.temp_min)
         }
 
@@ -105,7 +76,6 @@ export default function Forecast(props: Props) {
 
     return (
         <Container>
-            <h1>Previsão de tempo</h1>
 
             <>{loading &&
                 <>
@@ -149,14 +119,13 @@ export default function Forecast(props: Props) {
                     <ForecastDay
                         temp_min={getMinTemp(32, 39)}
                         temp_max={getMaxTemp(32, 39)}
-                        desc={data?.list[27]?.weather[0]?.description}
-                        main={data?.list[27]?.weather[0]?.main}
-                        clouds={data?.list[27].clouds.all}
-                        date={data?.list[27]?.dt_txt}
+                        desc={data?.list[37]?.weather[0]?.description}
+                        main={data?.list[37]?.weather[0]?.main}
+                        clouds={data?.list[37].clouds.all}
+                        date={data?.list[37]?.dt_txt}
                     />
-
                 </>
-
+                
             } </>
 
         </Container>
