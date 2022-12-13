@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import api from "../../utils/api"
 import {Data} from '../../Interfaces/TodayData'
 
-
 interface Props {
     city: string;
     enter: boolean;
@@ -12,12 +11,11 @@ interface Props {
 
 export default function Today(props: Props) {
 
-    
-
-
     const [formatedCity, setFormatedCity] = useState('sydney')
     const [data, setData] = useState<Data>()
     const [loading, setLoading] = useState(false)
+
+
     const API_KEY = process.env.REACT_APP_API_KEY
 
 
@@ -25,6 +23,7 @@ export default function Today(props: Props) {
         async function firstApiCall() {
             await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
                 setData(response.data)
+                
             })
             setLoading(true)
         }

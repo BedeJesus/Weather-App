@@ -9,4 +9,6 @@ export default createGlobalStyle`
     font-family: 'Manrope', sans-serif;
 
 }
+
+
 `
