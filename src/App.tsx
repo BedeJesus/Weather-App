@@ -15,14 +15,11 @@ export default function App() {
 
   async function search(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key == 'Enter') {
-
       enter ? setEnter(false) : setEnter(true)
     }
-
   }
 
   const [theme,setTheme] = usePersistedState('theme',light)
-
 
   const toggleTheme = () =>{
     setTheme(theme.title ==='light'? dark: light)
@@ -48,7 +45,6 @@ export default function App() {
       </Left>
 
       <Forecast city={city} enter={enter} />
-
     </Container>
   );
 }

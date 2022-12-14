@@ -8,6 +8,16 @@ align-items: center;
 padding: 0em 1em;
 width: 130%;
 margin:.46em 0;
+
+@media (max-width: 1200px) {
+    width: 151%;
+    
+  }
+
+  @media (max-width: 700px) {
+    width: 115%;
+    
+  }
 `
 
 export const Icon = styled.div`
