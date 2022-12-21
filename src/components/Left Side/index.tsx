@@ -41,7 +41,7 @@ export default function Today(props: Props) {
             })
             setLoading(true)
         }
-        
+
         firstApiCall()
 
 
@@ -64,6 +64,10 @@ export default function Today(props: Props) {
 
 
             })
+
+                .catch(() => {
+                    alert('Verifique se o país desejado foi digitado corretamente e está em inglês.')
+                })
         }
         search()
 
@@ -94,7 +98,7 @@ export default function Today(props: Props) {
 
                 <>
 
-                    <Date>{formatedDate}</Date>
+                    <Date>{'01/01/01'}</Date>
                     <Temperature>{data?.main.temp.toFixed(0)}º</Temperature>
                     <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
 

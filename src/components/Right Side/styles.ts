@@ -7,4 +7,6 @@ align-items: center;
 justify-content: space-between;
 margin: 2em 3% 2em 3%;
 border-radius: 10px;
+
+background-color: red;
 `
