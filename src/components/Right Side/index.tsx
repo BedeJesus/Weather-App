@@ -17,14 +17,21 @@ export default function Forecast(props: Props) {
     const API_KEY = process.env.REACT_APP_API_KEY
 
 
+    async function APICall() {
+
+        await api.get(`/forecast?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
+            setData(response.data)
+        })
+    }
+
+
     useEffect(() => {
-        async function firstApiCall() {
-            await api.get(`/forecast?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
-                setData(response.data)
+
+        APICall()
+
+            .then(() => {
+                setLoading(true)
             })
-            setLoading(true)
-        }
-        firstApiCall()
 
     }, [])
 
@@ -37,14 +44,10 @@ export default function Forecast(props: Props) {
 
     useEffect(() => {
 
-        async function search() {
-            await api.get(`/forecast?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
-                setData(response.data)
-            })
-        }
-        search()
+        APICall()
 
     }, [props.enter])
+
 
 
     function getMaxTemp(first: number, last: number) {
@@ -125,7 +128,7 @@ export default function Forecast(props: Props) {
                         date={data?.list[37]?.dt_txt}
                     />
                 </>
-                
+
             } </>
 
         </Container>

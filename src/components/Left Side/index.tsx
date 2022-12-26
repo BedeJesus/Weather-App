@@ -18,32 +18,28 @@ export default function Today(props: Props) {
     const [data, setData] = useState<Data>()
     const [loading, setLoading] = useState(false)
 
-
     const API_KEY = process.env.REACT_APP_API_KEY
 
 
+    async function APICall() {
+
+        await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
+            setData(response.data)
+        })
+
+            .catch(() => {
+                alert('Verifique se o país desejado foi digitado corretamente e está em inglês.')
+            })
+    }
 
 
     useEffect(() => {
-        async function firstApiCall() {
-            await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
-                setData(response.data)
-                unixApi.get(`?cached&s=${data?.dt}`).then((response) => {
-                    setFormatedDate(response.data)
 
-                    let date: string = response.data
-                    date = date.split(' ')[0]
-                    date = date.split('-').reverse().join('/');
-                    date = date.split("/", 3).join("/")
-                    setFormatedDate(date)
-                })
-
+        APICall()
+            .then(() => {
+                FormateDate()
+                    .then(() => setLoading(true))
             })
-            setLoading(true)
-        }
-
-        firstApiCall()
-
 
     }, [])
 
@@ -58,37 +54,28 @@ export default function Today(props: Props) {
 
     useEffect(() => {
 
-        async function search() {
-            await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
-                setData(response.data)
-
-
-            })
-
-                .catch(() => {
-                    alert('Verifique se o país desejado foi digitado corretamente e está em inglês.')
-                })
-        }
-        search()
+        APICall()
 
     }, [props.enter])
 
-    // function FormateDate() {
-    //     unixApi.get(`?cached&s=${data?.dt}`).then((response) => {
+    async function FormateDate() {
 
-    //         setFormatedDate(response.data)
+        await unixApi.get(`?cached&s=${data?.dt}`).then((response) => {
 
-    //         let date: string = response.data
-    //         date = date.split(' ')[0]
-    //         date = date.split('-').reverse().join('/');
-    //         date = date.split("/", 3).join("/")
-    //         setFormatedDate(date)
-    //         console.log('chamou')
+            console.log(response.data)
+            let date: string = response.data
+            console.log(date)
+            date = date.toString().split(' ')[0]
+            date = date.toString().split('-').reverse().join('/');
+            date = date.toString().split("/", 3).join("/")
 
-    //     })
+            setFormatedDate(date)
+            console.log('chamou')
+
+        })
+    }
 
 
-    // }
 
 
     return (
@@ -98,7 +85,7 @@ export default function Today(props: Props) {
 
                 <>
 
-                    <Date>{'01/01/01'}</Date>
+                    <Date>{formatedDate}</Date>
                     <Temperature>{data?.main.temp.toFixed(0)}º</Temperature>
                     <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
 
@@ -108,9 +95,6 @@ export default function Today(props: Props) {
                     </MinMax>
 
                 </>
-
-
-
             }</>
 
         </Container>
