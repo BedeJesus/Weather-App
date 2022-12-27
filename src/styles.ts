@@ -5,7 +5,6 @@ display: flex;
 justify-content:space-around;
 align-items: center; 
 background: linear-gradient(skyblue, cornflowerblue); // light mode
-background: linear-gradient(#868f96, #596164); //dark mode
 height: 100vh; 
 overflow: hidden;
 
@@ -22,6 +21,10 @@ border-radius: 10px;
 background-color: rgba(255,255,255, 0.4);
 padding: 1em; 
 margin-bottom:3%;
+z-index: 1;
+
+box-shadow:  8px 8px 16px #5e3e6e,
+             -8px -8px 16px #88599e;
 
 @media (max-width: 1200px) {
     margin-top:3em;
@@ -60,5 +63,7 @@ flex-direction:column;
 @media (max-width: 700px) {
     width: 28em;
   }
+
+  
 
 `

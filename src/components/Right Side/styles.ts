@@ -7,6 +7,10 @@ align-items: center;
 justify-content: space-between;
 margin: 2em 3% 2em 3%;
 border-radius: 10px;
+width: 37em;
 
-background-color: red;
+@media (max-width: 700px) {
+    width: 28em;
+  }
+
 `

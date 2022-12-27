@@ -3,22 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
 display: flex;
 border-radius: 10px;
-background-color: rgba(255,255,255, 0.4);;
+background-color: rgba(255,255,255, 0.4);
 align-items: center;
 padding: 0em 1em;
-/* width: 130%;  MUDAR AS DIMENSOES PARA FICAR PROPORCIONAL*/ 
 width: 100%;
 margin:.46em 0;
 
-@media (max-width: 1200px) {
-    /* width: 151%; */
-    
-  }
-
-  @media (max-width: 700px) {
-    /* width: 115%; */
-    
-  }
 `
 
 export const Icon = styled.div`

@@ -4,8 +4,11 @@ export const Container = styled.div`
 display: flex;
 flex-direction: column;
 border-radius: 10px;
-background-color: rgba(255,255,255, 0.4);;
+background-color: rgba(255,255,255, 0.4);
 padding: 1em;
+
+box-shadow:  19px 19px 38px #5e3e6e,
+             -19px -19px 38px #88599e;
 `
 
 export const City = styled.input`
