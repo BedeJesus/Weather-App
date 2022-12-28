@@ -1,16 +1,20 @@
 import styled from "styled-components";
+import image from '../src/assets/blurry-gradient-haikei.svg'
 
 export const Container = styled.div`
 display: flex;
 justify-content:space-around;
 align-items: center; 
-background: linear-gradient(skyblue, cornflowerblue); // light mode
+
+background-image: url(${image});
+background-size: cover;
 height: 100vh; 
 overflow: hidden;
 
+
 @media (max-width: 1200px) {
     flex-direction: column;
-    height:100%
+    height:100%;
   }
 `
 
@@ -18,13 +22,15 @@ export const City = styled.div`
 display: flex;
 flex-direction: column;
 border-radius: 10px;
-background-color: rgba(255,255,255, 0.4);
+
+backdrop-filter: blur(8px) saturate(180%);
+-webkit-backdrop-filter: blur(8px) saturate(180%);
+background-color: rgba(100, 100, 100, 0.35);
+
 padding: 1em; 
 margin-bottom:3%;
-z-index: 1;
 
-box-shadow:  8px 8px 16px #5e3e6e,
-             -8px -8px 16px #88599e;
+
 
 @media (max-width: 1200px) {
     margin-top:3em;
@@ -42,7 +48,7 @@ border: none;
 width: 7em;
 
 ::placeholder{
-    color: grey;
+    color: rgb(50,50,50);
     font-size: .7em;
 } 
 

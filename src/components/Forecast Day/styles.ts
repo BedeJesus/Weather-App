@@ -3,11 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
 display: flex;
 border-radius: 10px;
-background-color: rgba(255,255,255, 0.4);
+backdrop-filter: blur(8px) saturate(180%);
+-webkit-backdrop-filter: blur(8px) saturate(180%);
+background-color: rgba(100, 100, 100, 0.35);
+
 align-items: center;
 padding: 0em 1em;
 width: 100%;
 margin:.46em 0;
+
 
 `
 

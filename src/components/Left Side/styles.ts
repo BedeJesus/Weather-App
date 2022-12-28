@@ -4,11 +4,13 @@ export const Container = styled.div`
 display: flex;
 flex-direction: column;
 border-radius: 10px;
-background-color: rgba(255,255,255, 0.4);
+
+backdrop-filter: blur(8px) saturate(180%);
+-webkit-backdrop-filter: blur(8px) saturate(180%);
+background-color: rgba(100, 100, 100, 0.35);
+
 padding: 1em;
 
-box-shadow:  19px 19px 38px #5e3e6e,
-             -19px -19px 38px #88599e;
 `
 
 export const City = styled.input`
@@ -22,7 +24,7 @@ width: 7em;
 
 ::placeholder{
     color: grey;
-    font-size: .7em;
+    /* font-size: .7em; */
 } 
 
 :focus{
