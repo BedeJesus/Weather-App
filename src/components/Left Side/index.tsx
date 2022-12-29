@@ -37,9 +37,10 @@ export default function Today(props: Props) {
 
         APICall()
             .then(() => {
-                FormateDate()
-                    .then(() => setLoading(true))
-            })
+                    formateDate().then(()=>{
+                        setLoading(true)
+                    })
+            }) 
 
     }, [])
 
@@ -58,24 +59,20 @@ export default function Today(props: Props) {
 
     }, [props.enter])
 
-    async function FormateDate() {
+    async function formateDate() {
 
         await unixApi.get(`?cached&s=${data?.dt}`).then((response) => {
 
             console.log(response.data)
-            let date: string = response.data
+            var date = response.data
             console.log(date)
             date = date.toString().split(' ')[0]
             date = date.toString().split('-').reverse().join('/');
             date = date.toString().split("/", 3).join("/")
-
             setFormatedDate(date)
-            console.log('chamou')
 
         })
     }
-
-
 
 
     return (

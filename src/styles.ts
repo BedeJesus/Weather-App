@@ -3,7 +3,7 @@ import image from '../src/assets/blurry-gradient-haikei.svg'
 
 export const Container = styled.div`
 display: flex;
-justify-content:space-around;
+justify-content:space-evenly;
 align-items: center; 
 
 background-image: url(${image});
@@ -11,8 +11,7 @@ background-size: cover;
 height: 100vh; 
 overflow: hidden;
 
-
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
     flex-direction: column;
     height:100%;
   }
@@ -30,12 +29,9 @@ background-color: rgba(100, 100, 100, 0.35);
 padding: 1em; 
 margin-bottom:3%;
 
-
-
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
     margin-top:3em;
   }
-
 `
 
 export const Input = styled.input`
