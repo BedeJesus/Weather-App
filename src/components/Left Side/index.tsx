@@ -63,9 +63,7 @@ export default function Today(props: Props) {
 
         await unixApi.get(`?cached&s=${data?.dt}`).then((response) => {
 
-            console.log(response.data)
             var date = response.data
-            console.log(date)
             date = date.toString().split(' ')[0]
             date = date.toString().split('-').reverse().join('/');
             date = date.toString().split("/", 3).join("/")

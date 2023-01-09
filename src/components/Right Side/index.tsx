@@ -42,6 +42,7 @@ export default function Forecast(props: Props) {
 
     }, [props.city])
 
+
     useEffect(() => {
 
         APICall()
@@ -54,6 +55,7 @@ export default function Forecast(props: Props) {
 
         let values: number[] = []
 
+        if(data)
         for (let i = first; i <= last; i++) {
             values.push(data?.list[i]?.main?.temp_max)
         }
@@ -67,6 +69,7 @@ export default function Forecast(props: Props) {
 
         let values: number[] = []
 
+        if(data)
         for (let i = first; i <= last; i++) {
             values.push(data?.list[i]?.main?.temp_min)
         }
@@ -80,7 +83,9 @@ export default function Forecast(props: Props) {
     return (
         <Container>
 
-            <>{loading &&
+            <>{loading && data &&
+
+                
                 <>
 
                     <ForecastDay

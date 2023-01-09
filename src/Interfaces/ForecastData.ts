@@ -2,22 +2,21 @@ export interface Data {
     list: {
 
         main: {
-            temp: any;
-            temp_min: any;
-            temp_max: any;
+            temp: number;
+            temp_min: number;
+            temp_max: number;
         }
 
         weather: {
-            main: any;
-            description: any;
+            main: string;
+            description: string;
         }[]
 
         clouds: {
-            all: any;
+            all: number;
         }
 
-        dt_txt: any;
+        dt_txt: string;
     }[]
 
-    dt: any;
 }
