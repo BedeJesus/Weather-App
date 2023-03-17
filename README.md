@@ -5,7 +5,7 @@
 🤏🏽 Site totalmente responsivo.
 
 <h2>Tecnologias Utilizadas</h2>
-    <h3>Front-end:</h3>
+    <h3>Front End</h3>
     - React JS <br>
     - Typescript <br>
     - Styled Components<br>
