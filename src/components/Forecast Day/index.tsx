@@ -1,6 +1,4 @@
-import { Container, Line, Icon } from "./styles";
 import { ArrowUp, ArrowDown, CloudRain, Sun, CloudSnow, CloudFog, Cloud } from 'phosphor-react'
-
 
 interface Props {
     temp_min: number;
@@ -46,27 +44,33 @@ export default function ForecastDay(props: Props) {
     }
 
     return (
-        <Container>
+        <div className="grid grid-cols-[10%_65%_25%] rounded-2xl bg-gray-600/35 items-center w-full h-28 py-2 px-5">
 
-            <Icon>
-                <h1>{setIcon()}</h1>
-                <h2>{formatedDate()}</h2>
-            </Icon>
+            <div className="flex flex-col h-full justify-between items-center">
+                <h1 className="text-5xl">{setIcon()}</h1>
+                <h2 className="text-2xl">{formatedDate()}</h2>
+            </div>
 
-            <Line>
-                <h1>Temperatura</h1>
-                <h1>{props.desc}</h1>
-            </Line>
+            <div className="flex flex-col items-center text-start h-full justify-between">
+                <h1 className="text-2xl">Temperatura</h1>
+                <h1 className="text-2xl">{props.desc}</h1>
+            </div>
 
-            <Line>
-                <h2>
-                    <ArrowUp color="red" weight="bold" />{props.temp_max}º
-                    <ArrowDown color="blue" weight="bold" />{props.temp_min}º
-                </h2>
-        
-                <h2>{props.clouds}%</h2>
-            </Line>
+            <div className="flex flex-col items-center text-start h-full justify-between">
+                <div className="flex justify-end items-center gap-4 w-full">
+                    <div className="flex items-center text-2xl">
+                        <ArrowUp color="red" weight="bold" />
+                        <span>{props.temp_max}º</span>
+                    </div>
+                    <div className="flex items-center text-2xl">
+                        <ArrowDown color="blue" weight="bold" />
+                        <span>{props.temp_min}º</span>
+                    </div>
+                </div>
 
-        </Container>
+                <h2 className="text-end w-full text-2xl">{props.clouds}%</h2>
+            </div>
+
+        </div>
     )
 }
