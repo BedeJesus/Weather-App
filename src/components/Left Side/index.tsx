@@ -1,4 +1,3 @@
-import { Container, Temperature, Weather, MinMax, Date as StyledDate } from "./styles"
 import { ArrowUp, ArrowDown } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import api from "../../utils/api"
@@ -32,7 +31,7 @@ export default function Today(props: Props) {
 
         APICall()
             .then(() => {
-                    setLoading(true)
+                setLoading(true)
             })
     }, [])
 
@@ -51,11 +50,11 @@ export default function Today(props: Props) {
 
     }, [props.enter])
 
-    async function formateDate(unformattedDate:number) {
+    async function formateDate(unformattedDate: number) {
 
         const date = new window.Date(unformattedDate * 1000);
         const dia = date.getDate();
-        const mes = date.getMonth() + 1; 
+        const mes = date.getMonth() + 1;
         const ano = date.getFullYear();
         const diaFormatado = String(dia).padStart(2, '0');
         const mesFormatado = String(mes).padStart(2, '0');
@@ -65,22 +64,22 @@ export default function Today(props: Props) {
     }
 
     return (
-        <Container>
+        <div className="flex flex-col rounded-2xl h-116 justify-between py-3  bg-gray-600/35" >
 
             <>{loading &&
                 <>
-                    <StyledDate>{formatedDate}</StyledDate>
-                    <Temperature>{data?.main.temp.toFixed(0)}º</Temperature>
-                    <Weather>{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</Weather>
+                    <h2 className="flex justify-center text-2xl">{formatedDate}</h2>
+                    <h2 className="flex justify-center text-9xl">{data?.main.temp.toFixed(0)}º</h2>
+                    <h3 className="flex justify-center text-5xl">{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</h3>
 
-                    <MinMax>
-                        <h4> <ArrowUp color="red" />{data?.main.temp_max.toFixed(0)}º</h4>
-                        <h4> <ArrowDown color="blue" />{data?.main.temp_min.toFixed(0)}º</h4>
-                    </MinMax>
+                    <div className="flex justify-center ">
+                        <h4 className="flex items-center text-4xl"> <ArrowUp color="red" />{data?.main.temp_max.toFixed(0)}º</h4>
+                        <h4 className="flex items-center text-4xl"> <ArrowDown color="blue" />{data?.main.temp_min.toFixed(0)}º</h4>
+                    </div>
                 </>
             }</>
 
-        </Container>
+        </div>
 
     )
 

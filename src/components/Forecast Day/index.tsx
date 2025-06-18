@@ -44,7 +44,7 @@ export default function ForecastDay(props: Props) {
     }
 
     return (
-        <div className="grid grid-cols-[10%_65%_25%] rounded-2xl bg-gray-600/35 items-center w-full h-28 py-2 px-5">
+        <div className="grid grid-cols-[10%_65%_25%] rounded-2xl bg-gray-600/35 items-center w-full h-28.5 py-2 px-5">
 
             <div className="flex flex-col h-full justify-between items-center">
                 <h1 className="text-5xl">{setIcon()}</h1>
