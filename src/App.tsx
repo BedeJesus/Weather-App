@@ -15,10 +15,11 @@ export default function App() {
   }
 
   return (
-    <div className='flex justify-evenly items-center bg-cyan-300 bg-cover overflow-hidden h-screen'>
-      <div className='flex flex-col'>
+    <div className='flex justify-evenly items-center bg-cyan-300 bg-cover overflow-hidden h-screen max-lg:flex-col max-lg:h-full gap-4'>
 
-        <div className='flex flex-col rounded-3xl bg-gray-600/35 p-1 mb-1   '>
+      <div className='flex flex-col w-xl max-md:w-xs max-lg:mt-5 lg:ml-4 '>
+
+        <div className='flex flex-col rounded-3xl bg-gray-600/35 p-1 mb-1 max-lg:mb-4'>
           <input className='flex justify-center text-6xl bg-transparent border-none text-center focus:outline-none' 
             type='text'
             placeholder="Digite aqui a cidade"

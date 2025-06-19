@@ -23,22 +23,16 @@ export default function Forecast(props: Props) {
         })
     }
 
-
     useEffect(() => {
-
         APICall()
-
             .then(() => {
                 setLoading(true)
             })
-
     }, [])
 
     useEffect(() => {
-
         setFormatedCity(formatedCity.replace(/ /g, ','))
         setFormatedCity(props.city.toLowerCase())
-
     }, [props.city])
 
 
@@ -47,7 +41,6 @@ export default function Forecast(props: Props) {
         APICall()
 
     }, [props.enter])
-
 
 
     function getMaxTemp(first: number, last: number) {
@@ -78,7 +71,7 @@ export default function Forecast(props: Props) {
     }
 
     return (
-        <div className="flex flex-col w-xl gap-4">
+        <div className="flex flex-col w-xl gap-5 max-md:w-xs max-lg:mb-5 lg:mr-4">
 
             <>{loading && data &&
 

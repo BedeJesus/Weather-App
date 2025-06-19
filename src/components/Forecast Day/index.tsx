@@ -44,31 +44,31 @@ export default function ForecastDay(props: Props) {
     }
 
     return (
-        <div className="grid grid-cols-[10%_65%_25%] rounded-2xl bg-gray-600/35 items-center w-full h-28.5 py-2 px-5">
+        <div className="grid grid-cols-[15%_60%_25%] rounded-2xl bg-gray-600/35 items-center w-full py-2 px-5">
 
-            <div className="flex flex-col h-full justify-between items-center">
-                <h1 className="text-5xl">{setIcon()}</h1>
-                <h2 className="text-2xl">{formatedDate()}</h2>
+            <div className="flex flex-col h-full items-center justify-betwee">
+                <h1 className="text-5xl max-md:text-4xl">{setIcon()}</h1>
+                <h2 className="text-2xl max-md:text-xl">{formatedDate()}</h2>
             </div>
 
             <div className="flex flex-col items-center text-start h-full justify-between">
-                <h1 className="text-2xl">Temperatura</h1>
-                <h1 className="text-2xl">{props.desc}</h1>
+                <h1 className="text-2xl max-md:text-xl">Temperatura</h1>
+                <h1 className="text-2xl max-md:text-xl">{props.desc}</h1>
             </div>
 
             <div className="flex flex-col items-center text-start h-full justify-between">
-                <div className="flex justify-end items-center gap-4 w-full">
-                    <div className="flex items-center text-2xl">
+                <div className="flex justify-end items-center gap-4 w-full max-md:gap-0">
+                    <div className="flex items-center text-2xl max-md:text-xl">
                         <ArrowUp color="red" weight="bold" />
                         <span>{props.temp_max}º</span>
                     </div>
-                    <div className="flex items-center text-2xl">
+                    <div className="flex items-center text-2xl max-md:text-xl">
                         <ArrowDown color="blue" weight="bold" />
                         <span>{props.temp_min}º</span>
                     </div>
                 </div>
 
-                <h2 className="text-end w-full text-2xl">{props.clouds}%</h2>
+                <h2 className="text-end w-full text-2xl max-md:text-xl">{props.clouds}%</h2>
             </div>
 
         </div>

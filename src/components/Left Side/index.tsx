@@ -64,13 +64,13 @@ export default function Today(props: Props) {
     }
 
     return (
-        <div className="flex flex-col rounded-2xl h-116 justify-between py-3  bg-gray-600/35" >
+        <div className="flex flex-col rounded-2xl h-116 justify-between py-3 w-full bg-gray-600/35" >
 
             <>{loading &&
                 <>
-                    <h2 className="flex justify-center text-2xl">{formatedDate}</h2>
-                    <h2 className="flex justify-center text-9xl">{data?.main.temp.toFixed(0)}º</h2>
-                    <h3 className="flex justify-center text-5xl">{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</h3>
+                    <h2 className="flex justify-center text-3xl">{formatedDate}</h2>
+                    <h2 className="flex justify-center text-9xl max-md:text-8xl">{data?.main.temp.toFixed(0)}º</h2>
+                    <h3 className="flex justify-center text-5xl max-md:text-4xl">{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</h3>
 
                     <div className="flex justify-center ">
                         <h4 className="flex items-center text-4xl"> <ArrowUp color="red" />{data?.main.temp_max.toFixed(0)}º</h4>
