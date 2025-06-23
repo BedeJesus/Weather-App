@@ -22,7 +22,9 @@ export default function Today(props: Props) {
 
         await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
             setData(response.data)
-            formateDate(response.data.dt)
+            setFormatedDate(formateDate(response.data.dt))
+
+            console.log(response.data)
         }).catch(() => {
             alert('Verifique se o país desejado foi digitado corretamente e está em inglês.')
         })
@@ -51,7 +53,7 @@ export default function Today(props: Props) {
 
     }, [props.enter])
 
-    async function formateDate(unformattedDate: number) {
+    function formateDate(unformattedDate: number) {
 
         const date = new window.Date(unformattedDate * 1000);
         const dia = date.getDate();
@@ -60,38 +62,52 @@ export default function Today(props: Props) {
         const diaFormatado = String(dia).padStart(2, '0');
         const mesFormatado = String(mes).padStart(2, '0');
         const dataFinal = `${diaFormatado}/${mesFormatado}/${ano}`;
-        setFormatedDate(dataFinal)
+
+        return dataFinal
+
+    }
+
+    function formateHour(unformattedHour: number) {
+
+        const timestampEmMilissegundos = unformattedHour * 1000;
+        const data = new Date(timestampEmMilissegundos);
+        const horas = data.getHours();
+        const minutos = data.getMinutes();
+        const horasFormatadas = String(horas).padStart(2, '0');
+        const minutosFormatados = String(minutos).padStart(2, '0');
+
+        return `${horasFormatadas}:${minutosFormatados}`;
 
     }
 
     return (
         <div className="flex flex-col rounded-2xl h-116 justify-between py-3 w-full bg-gray-600/35" >
 
-            <>{loading &&
+            <>{loading && data &&
                 <>
                     <div>
                         <h2 className="flex justify-center text-3xl">{formatedDate}</h2>
-                        <h2 className="flex justify-center text-9xl max-md:text-8xl">{data?.main.temp.toFixed(0)}º</h2>
-                        <h3 className="flex justify-center text-5xl max-md:text-4xl">{`${data?.weather[0].description.charAt(0).toUpperCase()}${data?.weather[0].description.slice(1)}`}</h3>
+                        <h2 className="flex justify-center text-9xl max-md:text-8xl">{data.main.temp.toFixed(0)}º</h2>
+                        <h3 className="flex justify-center text-5xl max-md:text-4xl">{`${data.weather[0].description.charAt(0).toUpperCase()}${data.weather[0].description.slice(1)}`}</h3>
 
                         <div className="flex justify-center ">
-                            <h4 className="flex items-center text-4xl"> <ArrowUp color="red" />{data?.main.temp_max.toFixed(0)}º</h4>
-                            <h4 className="flex items-center text-4xl"> <ArrowDown color="blue" />{data?.main.temp_min.toFixed(0)}º</h4>
+                            <h4 className="flex items-center text-4xl"> <ArrowUp color="red" />{data.main.temp_max.toFixed(0)}º</h4>
+                            <h4 className="flex items-center text-4xl"> <ArrowDown color="blue" />{data.main.temp_min.toFixed(0)}º</h4>
                         </div>
                     </div>
 
                     <div className='flex gap-1 justify-center'>
-                        <InfoBox label='Vento' icon='Wind' value={0} />
-                        <InfoBox label='Humidade' icon='Drop' value={0} />
-                        <InfoBox label='Pressão' icon='CloudArrowDown' value={0} />
-                        <InfoBox label='Visibilidade' icon='Eye' value={0}/>
+                        <InfoBox label='Vento' icon='Wind' value={`${data.wind.speed} km/h`} />
+                        <InfoBox label='Humidade' icon='Drop' value={`${data.main.humidity}%`} />
+                        <InfoBox label='Pressão' icon='CloudArrowDown' value={`${data.main.pressure} mb`} />
+                        <InfoBox label='Visibilidade' icon='Eye' value={`${data.visibility / 1000} km`} />
                     </div>
 
                     <div className='flex gap-1 justify-center'>
-                        <InfoBox label='Nascer do Sol' icon='SunHorizon' value={0} />
-                        <InfoBox label='Por do Sol' icon='SunDim' value={0} />
-                        <InfoBox label='sei la' icon='Wind' value={0}  />
-                        <InfoBox label='sei la 2' icon='Wind' value={0}  />
+                        <InfoBox label='Nascer do Sol' icon='SunHorizon' value={formateHour(data.sys.sunrise)} />
+                        <InfoBox label='Por do Sol' icon='SunDim' value={formateHour(data.sys.sunset)} />
+                        <InfoBox label='Nuvens' icon='Cloud' value={`${data.clouds.all}%`} />
+                        <InfoBox label='País' icon='Flag' value={`${data.sys.country}`} />
                     </div>
                 </>
 

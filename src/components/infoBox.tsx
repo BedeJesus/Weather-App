@@ -1,20 +1,22 @@
-import { Wind, SunHorizon, SunDim, Drop, CloudArrowDown, Eye } from "phosphor-react";
+import { Wind, SunHorizon, SunDim, Drop, CloudArrowDown, Eye, Cloud, Flag } from "phosphor-react";
 import type { IconProps } from "phosphor-react"; // Importante para tipagem
 import { useState } from "react";
 
 const iconMap: { [key: string]: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>> } = {
-    Wind: Wind,
-    SunHorizon: SunHorizon,
-    SunDim: SunDim,
-    Drop: Drop,
-    CloudArrowDown: CloudArrowDown,
-    Eye: Eye,
+    Wind,
+    SunHorizon,
+    SunDim,
+    Drop,
+    CloudArrowDown,
+    Eye,
+    Cloud,
+    Flag
 };
 
 interface Props {
     label: string;
     icon: string;
-    value: number;
+    value: number | string;
 }
 
 export default function infoBox(props: Props) {
