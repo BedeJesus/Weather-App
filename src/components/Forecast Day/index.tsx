@@ -44,14 +44,14 @@ export default function ForecastDay(props: Props) {
     }
 
     return (
-        <div className="grid grid-cols-[15%_60%_25%] rounded-2xl bg-gray-600/35 items-center w-full py-2 px-5">
+        <div className="grid grid-cols-[15%_60%_25%] max-md:grid-cols-[20%_50%_30%] rounded-2xl bg-gray-600/35 items-center w-full py-1 px-2">
 
-            <div className="flex flex-col h-full items-center justify-betwee">
+            <div className="flex flex-col h-full items-center">
                 <h1 className="text-5xl max-md:text-4xl">{setIcon()}</h1>
                 <h2 className="text-2xl max-md:text-xl">{formatedDate()}</h2>
             </div>
 
-            <div className="flex flex-col items-center text-start h-full justify-between">
+            <div className="flex flex-col items-end  text-start h-full justify-between">
                 <h1 className="text-2xl max-md:text-xl">Temperatura</h1>
                 <h1 className="text-2xl max-md:text-xl">{props.desc}</h1>
             </div>
