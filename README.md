@@ -8,7 +8,7 @@
     <h3>Front End</h3>
     - React JS <br>
     - Typescript <br>
-    - Styled Components<br>
+    - Tailwind CSS.<br>
     
 <h2>Versão Desktop</h2>  
 <img src ="for_readme/desktop.gif">
