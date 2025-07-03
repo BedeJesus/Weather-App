@@ -1,4 +1,3 @@
-// import { Container } from "./styles"
 import ForecastDay from "../Forecast Day"
 import { useEffect, useState } from 'react'
 import api from "../../utils/api"
