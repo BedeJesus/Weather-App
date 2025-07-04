@@ -32,8 +32,7 @@ export default function infoBox(props: Props) {
     return (
 
         <div className="group w-2xl h-20 font-sans" onClick={handleFlip}>
-            <div
-                className={`relative h-full w-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
+            <div className={`relative h-full w-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
     
                 <div className="absolute flex h-full w-full flex-col justify-center rounded-2xl border shadow-[0_8px_14px_0_rgba(0,0,0,0.2)] [backface-visibility:hidden] ">
                      <p className="flex text-center text-2xl justify-center "><IconComponent/></p>

@@ -23,8 +23,6 @@ export default function Today(props: Props) {
         await api.get(`/weather?q=${formatedCity}&appid=${API_KEY}&units=metric&lang=pt_br`).then((response) => {
             setData(response.data)
             setFormatedDate(formateDate(response.data.dt))
-
-            console.log(response.data)
         }).catch(() => {
             alert('Verifique se o país desejado foi digitado corretamente e está em inglês.')
         })
@@ -81,7 +79,7 @@ export default function Today(props: Props) {
     }
 
     return (
-        <div className="flex flex-col rounded-2xl h-116 justify-between p-3 w-full bg-gray-600/35" >
+        <div className="flex  flex-col rounded-2xl h-116 justify-between p-3 w-full bg-gray-600/35 border" >
 
             <>{loading && data &&
                 <>

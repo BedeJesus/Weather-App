@@ -19,8 +19,8 @@ export default function App() {
 
       <div className='flex flex-col w-xl max-md:w-xs max-lg:mt-5 lg:ml-4 '>
 
-        <div className='flex flex-col rounded-3xl bg-gray-600/35 p-1 mb-1 max-lg:mb-4'>
-          <input className='flex justify-center text-6xl bg-transparent border-none text-center focus:outline-none' 
+        <div className='flex flex-col rounded-3xl bg-gray-600/35  mb-1 max-lg:mb-4'>
+          <input className='flex justify-center text-6xl bg-transparent border rounded-3xl text-center focus:outline-none' 
             type='text'
             placeholder="Digite aqui a cidade"
             value={city}

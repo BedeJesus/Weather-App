@@ -5,6 +5,9 @@ export interface Data {
             temp: number;
             temp_min: number;
             temp_max: number;
+            feels_like: number;
+            pressure: number;
+            humidity: number;
         }
 
         weather: {
@@ -17,6 +20,19 @@ export interface Data {
         }
 
         dt_txt: string;
+
+        visibility:number
+
+        wind:{
+            speed:number;
+            deg:number;
+        }
+
+        sys:{
+            country: string,
+            sunrise: number,
+            sunset: number
+        }
     }[]
 
 }
