@@ -70,7 +70,7 @@ export default function Forecast(props: Props) {
     }
 
     return (
-        <div className="flex flex-col w-xl gap-5 max-md:w-xs max-lg:mb-5 lg:mr-4">
+        <div className="flex flex-col w-xl gap-6 max-md:w-xs max-lg:mb-5 lg:mr-4">
 
             <>{loading && data &&
 

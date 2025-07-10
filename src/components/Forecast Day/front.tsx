@@ -32,26 +32,26 @@ export default function Front(props: Props) {
         <div className="absolute grid h-full w-full grid-cols-[15%_60%_25%] items-center border rounded-2xl bg-gray-600/35 px-2 py-1 [backface-visibility:hidden] max-md:grid-cols-[20%_50%_30%]">
             <div className="flex h-full flex-col items-center justify-center">
                 <h1 className="text-5xl max-md:text-4xl">{setIcon()}</h1>
-                <h2 className="text-2xl max-md:text-xl">{formatedDate()}</h2>
+                <h2 className="text-2xl max-md:text-lg">{formatedDate()}</h2>
             </div>
 
             <div className="flex h-full flex-col items-end justify-between text-start">
-                <h1 className="text-2xl max-md:text-xl">Temperatura</h1>
-                <h1 className="text-2xl capitalize max-md:text-xl">{props.desc}</h1>
+                <h1 className="text-2xl max-md:text-lg">Temperatura</h1>
+                <h1 className="text-2xl capitalize max-md:text-lg">{props.desc}</h1>
             </div>
 
             <div className="flex h-full flex-col items-center justify-between text-start">
                 <div className="flex w-full items-center justify-end gap-4 max-md:gap-0">
-                    <div className="flex items-center text-2xl max-md:text-xl">
+                    <div className="flex items-center text-2xl max-md:text-lg">
                         <ArrowUp color="red" weight="bold" />
                         <span>{props.temp_max}º</span>
                     </div>
-                    <div className="flex items-center text-2xl max-md:text-xl">
+                    <div className="flex items-center text-2xl max-md:text-lg">
                         <ArrowDown color="blue" weight="bold" />
                         <span>{props.temp_min}º</span>
                     </div>
                 </div>
-                <h2 className="w-full text-end text-2xl max-md:text-xl">{props.clouds}%</h2>
+                <h2 className="w-full text-end text-2xl max-md:text-lg">{props.clouds}%</h2>
             </div>
         </div>
     )
