@@ -1,5 +1,5 @@
 <h1>Weather App</h1>
-👨‍💻 Site que mostra a temperatura atual e a previsão de tempo de várias cidades do mundo.<br>
+👨‍💻 Site que mostra a temperatura atual, previsão de tempo e mais informações meteriológicas de várias cidades do mundo.<br>
 🪄 Pesquisa realizada com ou sem letras maiúsculas.<br>
 🔢 Aplicação desenvolvida com a API da Open Weather, disponivel em https://openweathermap.org/api<br>
 🤏🏽 Site totalmente responsivo.
