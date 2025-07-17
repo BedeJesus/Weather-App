@@ -79,7 +79,7 @@ export default function Today(props: Props) {
     }
 
     return (
-        <div className="flex  flex-col rounded-2xl h-116 justify-between p-3 w-full bg-gray-600/35 border" >
+        <div className="flex  flex-col rounded-2xl h-116 justify-between p-3 w-full bg-gray-600/35 border shadow-[0_8px_14px_0_rgba(0,0,0,0.2)] [backface-visibility:hidden]" >
 
             <>{loading && data &&
                 <>

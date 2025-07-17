@@ -20,7 +20,7 @@ export default function App() {
       <div className='flex flex-col w-xl max-md:w-xs max-lg:mt-5 lg:ml-4 '>
 
         <div className='flex flex-col rounded-3xl bg-gray-600/35  mb-1 max-lg:mb-4'>
-          <input className='flex justify-center text-6xl bg-transparent border rounded-3xl text-center focus:outline-none' 
+          <input className='flex justify-center text-6xl bg-transparent border rounded-3xl text-center focus:outline-none shadow-[0_8px_14px_0_rgba(0,0,0,0.2)] [backface-visibility:hidden]' 
             type='text'
             placeholder="Digite aqui a cidade"
             value={city}

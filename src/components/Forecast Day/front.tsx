@@ -29,18 +29,18 @@ export default function Front(props: Props) {
     }
 
     return (
-        <div className="absolute grid h-full w-full grid-cols-[15%_60%_25%] items-center border rounded-2xl bg-gray-600/35 px-2 py-1 [backface-visibility:hidden] max-md:grid-cols-[20%_50%_30%]">
-            <div className="flex h-full flex-col items-center justify-center">
+        <div className="absolute grid h-full w-full grid-cols-[15%_60%_25%] items-center border rounded-2xl bg-gray-600/35 px-2 py-1 [backface-visibility:hidden] max-md:grid-cols-[20%_50%_30%] shadow-[0_8px_14px_0_rgba(0,0,0,0.2)]">
+            <div className="flex h-full flex-col items-center justify-evenly">
                 <h1 className="text-5xl max-md:text-4xl">{setIcon()}</h1>
                 <h2 className="text-2xl max-md:text-lg">{formatedDate()}</h2>
             </div>
 
-            <div className="flex h-full flex-col items-end justify-between text-start">
+            <div className="flex h-full flex-col items-end justify-evenly text-start">
                 <h1 className="text-2xl max-md:text-lg">Temperatura</h1>
                 <h1 className="text-2xl capitalize max-md:text-lg">{props.desc}</h1>
             </div>
 
-            <div className="flex h-full flex-col items-center justify-between text-start">
+            <div className="flex h-full flex-col items-center justify-evenly text-start">
                 <div className="flex w-full items-center justify-end gap-4 max-md:gap-0">
                     <div className="flex items-center text-2xl max-md:text-lg">
                         <ArrowUp color="red" weight="bold" />

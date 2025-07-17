@@ -26,7 +26,7 @@ export default function ForecastDay(props: Props) {
     };
 
     return (
-        <div className="group h-22.5 cursor-pointer font-sans" onClick={handleFlip}>
+        <div className="group h-22.5 cursor-pointer font-sans" onClick={handleFlip} >
             <div className={`relative h-full w-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
 
                 <Front
