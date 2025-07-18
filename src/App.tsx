@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export default function App() {
 
-  const [city, setCity] = useState('Sydney')
+  const [city, setCity] = useState('Sao Paulo')
   const [enter, setEnter] = useState(false)
 
   async function search(event: React.KeyboardEvent<HTMLInputElement>) {

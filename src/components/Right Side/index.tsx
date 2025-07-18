@@ -48,7 +48,7 @@ export default function Forecast(props: Props) {
 
         if (data)
             for (let i = first; i <= last; i++) {
-                values.push(data?.list[i]?.main?.temp_max)
+                values.push(data.list[i].main.temp_max)
             }
 
         const tempMax = Math.max(...values)

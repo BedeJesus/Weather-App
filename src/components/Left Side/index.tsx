@@ -11,7 +11,7 @@ interface Props {
 
 export default function Today(props: Props) {
 
-    const [formatedCity, setFormatedCity] = useState('sydney')
+    const [formatedCity, setFormatedCity] = useState('sao paulo')
     const [formatedDate, setFormatedDate] = useState('01')
     const [data, setData] = useState<Data>()
     const [loading, setLoading] = useState(false)

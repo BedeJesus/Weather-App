@@ -12,7 +12,7 @@ interface Props {
 export default function Back(props: Props) {
 
     return (
-        <div className="flex h-full w-full justify-between gap-  rounded-2xl border bg-gray-600/35 p-2 shadow-[0_8px_14px_0_rgba(0,0,0,0.2)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div className="flex h-full w-full justify-around rounded-2xl border bg-gray-600/35 p-2 shadow-[0_8px_14px_0_rgba(0,0,0,0.2)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
             <div className="flex flex-col items-center justify-around text-sm">
                 <Wind size={24} />{props.wind?.toFixed(1)} km/h
             </div>
