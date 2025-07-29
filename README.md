@@ -5,7 +5,7 @@
 
 <h2>Tecnologias Utilizadas</h2>
     <h3>Front End</h3>
-    - React JS <br>
+    - React <br>
     - Typescript <br>
     - Tailwind CSS<br>
     
